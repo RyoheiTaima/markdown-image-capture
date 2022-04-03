@@ -15,10 +15,10 @@ const extractImageMark = (s: string): string[] => {
 
 const parseImageMark = (imageMark: string): ImageParam => {
   const parser =
-    /!\[(?<pageName>[^_]+)_(?<selector>.+?)\]\((?<savaPath>[^)]+)\)/;
+    /!\[(?<pageName>[^_]+)(?:_(?<selector>.+?))?\]\((?<savePath>[^)]+)\)/;
 
   const result = imageMark.match(parser)?.groups;
-  if (!(result && "pageName" in result && "savePath" in result)) {
+  if (!result) {
     throw new InvalidImageMarkError(imageMark);
   }
   return {

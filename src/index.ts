@@ -39,7 +39,7 @@ const main = async () => {
 };
 
 const getImageParams = async (path: string) => {
-  return await readImageMark(path);
+  return readImageMark(path);
 };
 
 const getConfig = async (path: string) => {

@@ -1,4 +1,4 @@
-import genericPool, { Factory, Options, Pool } from "generic-pool";
+import genericPool, { Options, Pool } from "generic-pool";
 
 import {
   chromium,
@@ -14,29 +14,31 @@ class PagePool {
   context: BrowserContext;
   pool: Pool<Page>;
 
-  constructor(context: BrowserContext, factory: Factory<Page>, opt: Options) {
+  constructor(context: BrowserContext, opt: Options) {
+    const factory = {
+      create: () => {
+        return context.newPage();
+      },
+      destroy: (page: Page) => {
+        return page.close();
+      },
+    };
+
     this.context = context;
     this.pool = genericPool.createPool(factory, opt);
   }
 
-  public async acquire() {
-    return this.pool.acquire();
-  }
-
-  public async release(page: Page) {
+  public acquire = async () => await this.pool.acquire();
+  public release = async (page: Page) => {
     await this.pool.release(page);
-  }
-
-  public async close() {
+  };
+  public close = async () => {
     await this.pool.drain();
     await Promise.all([this.pool.clear(), this.context.browser()?.close()]);
-  }
+  };
 }
 
-export const getPagePool = async (
-  browserType: BrowserType,
-  num_pages: number = 4
-) => {
+export const getPagePool = async (browserType: BrowserType, num_pages = 4) => {
   if (num_pages <= 0) {
     throw new RangeError(
       `The value ${num_pages} is out of the valid 'num_pages' range. 'num_pages' should be greater than one.`
@@ -44,15 +46,7 @@ export const getPagePool = async (
   }
 
   const context = await getBrowser(browserType);
-  const factory = {
-    create: () => {
-      return context.newPage();
-    },
-    destroy: (page: Page) => {
-      return page.close();
-    },
-  };
-  const pool = new PagePool(context, factory, { max: num_pages });
+  const pool = new PagePool(context, { max: num_pages });
   return pool;
 };
 
@@ -61,6 +55,7 @@ const getBrowser = async (browserType: BrowserType) => {
   switch (browserType) {
     case "chromium":
       browser = await chromium.launch();
+      console.log(JSON.stringify(browser));
       break;
     case "firefox":
       browser = await firefox.launch();
