@@ -20,11 +20,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/RyoheiTaima/markdown-image-capture/issues"
   },
   "homepage": "https://github.com/RyoheiTaima/markdown-image-capture#readme",
+  "bin": {
+    "markkdown-image-capture": "index.js"
+  },
   "jest": {
     "coverageDirectory": "coverage",
     "coverageProvider": "v8",
