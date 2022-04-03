@@ -1,5 +1,10 @@
 # Markdown Image Capture
 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![build workflow](https://github.com/RyoheiTaima/markdown-image-capture/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/RyoheiTaima/markdown-image-capture/branch/master/graph/badge.svg?token=8F55ID109P)](https://codecov.io/gh/RyoheiTaima/markdown-image-capture)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/RyoheiTaima/markdown-image-capture)
+
 This tool is to capture images specified markdown.
 
 ## Installation
