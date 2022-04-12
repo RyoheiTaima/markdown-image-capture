@@ -23,7 +23,7 @@ const parseImageMark = (imageMark: string): ImageParam => {
   }
   return {
     pageName: result.pageName,
-    selector: result.selector,
+    selector: result.selector?.replace("/", "//"),
     savePath: result.savePath,
   };
 };
