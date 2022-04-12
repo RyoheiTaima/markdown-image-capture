@@ -2,9 +2,14 @@
   "name": "markdown-image-capture",
   "version": "0.1.0",
   "description": "This tool is to capture images specified markdown.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "ts-node --files src/index.ts",
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "lint": "npm run lint:eslint; npm run lint:prettier",
     "lint:eslint": "eslint src/**/*.ts",
     "lint:prettier": "prettier --check src/**/*.ts",
@@ -26,7 +31,7 @@
   },
   "homepage": "https://github.com/RyoheiTaima/markdown-image-capture#readme",
   "bin": {
-    "markkdown-image-capture": "index.js"
+    "markkdown-image-capture": "dist/index.js"
   },
   "jest": {
     "coverageDirectory": "coverage",
