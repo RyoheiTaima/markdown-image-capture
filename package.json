@@ -1,6 +1,6 @@
 {
   "name": "markdown-image-capture",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "This tool is to capture images specified markdown.",
   "main": "dist/index.js",
   "files": [
