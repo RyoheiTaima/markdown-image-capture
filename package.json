@@ -30,9 +30,7 @@
     "url": "https://github.com/RyoheiTaima/markdown-image-capture/issues"
   },
   "homepage": "https://github.com/RyoheiTaima/markdown-image-capture#readme",
-  "bin": {
-    "markkdown-image-capture": "dist/index.js"
-  },
+  "bin": "dist/index.js",
   "jest": {
     "coverageDirectory": "coverage",
     "coverageProvider": "v8",
