@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Page } from "playwright";
 
 import { readJsonWithDefault } from "./readJson";
