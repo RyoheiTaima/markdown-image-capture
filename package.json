@@ -35,7 +35,8 @@
     "coverageDirectory": "coverage",
     "coverageProvider": "v8",
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": ["dist"]
   },
   "dependencies": {
     "commander": "^9.1.0",
